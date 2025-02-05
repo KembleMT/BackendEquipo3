@@ -87,3 +87,11 @@ INSERT INTO Carrito_Productos (id_usuario_fk, id_producto_fk, cantidad) VALUES
 (10, 4, 3);
 
 SELECT * FROM carrito_productos;
+SELECT * FROM categorias;
+SELECT * FROM detalle_pedido;
+SELECT * FROM estados_pedido;
+SELECT * FROM metodos_pago;
+SELECT * FROM pedidos;
+SELECT * FROM productos;
+SELECT * FROM roles;
+SELECT * FROM usuarios;
