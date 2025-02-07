@@ -1,69 +1,84 @@
 package org.generation.BrickMania.producto.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "producto")
+@Table(name = "Productos") // Coincide con la BD
 public class Producto {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String nombre;
-	private String descripcion;
-	private Double precio;
-	private Long idCategoria;
-	
-	public Producto(String nombre, String descripcion, Double precio) {
-		super();
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.precio = precio;
-	}
 
-	public Producto() {
-		
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_producto")
+    private Integer id;
 
-	public String getNombre() {
-		return nombre;
-	}
+    @Column(name = "nombre_producto", nullable = false)
+    private String nombre;
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    @Column(name = "descripcion")
+    private String descripcion;
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    @Column(name = "precio_producto", nullable = false)
+    private Double precio;
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    @ManyToOne
+    @JoinColumn(name = "id_categoria_fk", nullable = false)
+    private Categoria categoria;
 
-	public Double getPrecio() {
-		return precio;
-	}
+    // Constructor vacío
+    public Producto() {}
 
-	public void setPrecio(Double precio) {
-		this.precio = precio;
-	}
+    // Constructor con parámetros
+    public Producto(String nombre, String descripcion, Double precio, Categoria categoria) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.categoria = categoria;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    // Getters y Setters
+    public Integer getId() {
+        return id;
+    }
 
-	public Long getIdCategoria() {
-		return idCategoria;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	@Override
-	public String toString() {
-		return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio
-				+ ", idCategoria=" + idCategoria + "]";
-	}//toString
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio
+                + ", categoria=" + categoria + "]";
+    }
 }

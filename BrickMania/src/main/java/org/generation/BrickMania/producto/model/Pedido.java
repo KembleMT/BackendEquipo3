@@ -1,9 +1,6 @@
 package org.generation.BrickMania.producto.model;
 
-import org.generation.BrickMania.producto.model; //importacion de usuario revisar si esta correcta para que no marque error
-
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -18,7 +15,7 @@ public class Pedido {
     // Relación con Usuario: un pedido pertenece a un usuario.
     @ManyToOne
     @JoinColumn(name = "id_usuario_fk", nullable = false)
-    private Usuario usuario;
+    private Usuarios usuario;
 
     @Column(name = "total_pago", nullable = false)
     private Double totalPago;
@@ -35,7 +32,7 @@ public class Pedido {
     // Constructores
     public Pedido() {}
 
-    public Pedido(Usuario usuario, Double totalPago, LocalDate fechaCompra, Integer idMetodoFk, String idEstadoFk) {
+    public Pedido(Usuarios usuario, Double totalPago, LocalDate fechaCompra, Integer idMetodoFk, String idEstadoFk) {
         super();
     	this.usuario = usuario;
         this.totalPago = totalPago;
@@ -48,7 +45,7 @@ public class Pedido {
     public Long getId() {
         return id;
     }
-    public Usuario getUsuario() {
+    public Usuarios getUsuario() {
         return usuario;
     }
     public Double getTotalPago() {

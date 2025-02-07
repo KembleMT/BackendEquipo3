@@ -20,7 +20,7 @@ public class CarritoProductoService {
         return carritoProductoRepository.findAll();
     }
 
-    public Optional<CarritoProducto> getCarritoProductoById(Long id) {
+    public Optional<CarritoProducto> getCarritoProductoById(Integer id) {
         return carritoProductoRepository.findById(id);
     }
 
@@ -28,8 +28,11 @@ public class CarritoProductoService {
         return carritoProductoRepository.save(carritoProducto);
     }
 
-    public void deleteCarritoProducto(Long id) {
+    public void deleteCarritoProducto(Integer id) {
         carritoProductoRepository.deleteById(id);
     }
 }
+
+
+
 
