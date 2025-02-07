@@ -1,6 +1,12 @@
 package org.generation.BrickMania.producto.model;
 
-import jakarta.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "Carrito_Productos")
@@ -12,7 +18,7 @@ public class CarritoProducto {
 
     @ManyToOne
     @JoinColumn(name = "id_usuario_fk", nullable = false)
-    private Usuario usuario;
+    private Usuarios usuario;
 
     @ManyToOne
     @JoinColumn(name = "id_producto_fk", nullable = false)
@@ -24,7 +30,8 @@ public class CarritoProducto {
     public CarritoProducto() {}
 
     // Constructor con parámetros
-    public CarritoProducto(Usuario usuario, Producto producto, int cantidad) {
+    public CarritoProducto(Usuarios usuario, Producto producto, int cantidad) {
+    	super();
         this.usuario = usuario;
         this.producto = producto;
         this.cantidad = cantidad;
@@ -39,11 +46,11 @@ public class CarritoProducto {
         this.id_carrito_producto = id_carrito_producto;
     }
 
-    public Usuario getUsuario() {
+    public Usuarios getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Usuarios usuario) {
         this.usuario = usuario;
     }
 
@@ -62,4 +69,12 @@ public class CarritoProducto {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
+	@Override
+	public String toString() {
+		return "CarritoProducto [id_carrito_producto=" + id_carrito_producto + ", usuario=" + usuario + ", producto="
+				+ producto + ", cantidad=" + cantidad + "]";
+	}
+    
+    
 }

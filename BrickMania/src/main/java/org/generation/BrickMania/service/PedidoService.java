@@ -34,7 +34,6 @@ public class PedidoService {
         Optional<Pedido> optional = pedidoRepository.findById(id);
         if (optional.isPresent()) {
             Pedido pedido = optional.get();
-            pedido.setUsuario(pedidoUpdated.getUsuario()); //revisar que concuerde con modelo usuario
             pedido.setTotalPago(pedidoUpdated.getTotalPago());
             pedido.setFechaCompra(pedidoUpdated.getFechaCompra());
             pedido.setIdMetodoFk(pedidoUpdated.getIdMetodoFk());
