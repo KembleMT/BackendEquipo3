@@ -32,7 +32,7 @@ public class ProductoController {
 	
 	// 2️. Obtener un producto por ID
     @GetMapping(path="{productoId}")
-    public Producto getProducto(@PathVariable("productoId") Long id) {
+    public Producto getProducto(@PathVariable("productoId") Integer id) {
         return productoService.getProduct(id);
     }
 
@@ -44,7 +44,7 @@ public class ProductoController {
 
     //4️. Eliminar un producto por ID
     @DeleteMapping(path="{productoId}")
-    public Producto deleteProducto(@PathVariable("productoId") Long id) {
+    public Producto deleteProducto(@PathVariable("productoId") Integer id) {
         return productoService.deletProduct(id);
     }
 	

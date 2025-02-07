@@ -24,13 +24,13 @@ public class ProductosService {
 		return productosRepository.findAll();// cambiamos
 	}//getAllProducts
 	
-	public Producto getProduct (Long id){
+	public Producto getProduct (Integer id){
 		return productosRepository.findById(id).orElseThrow(
 		()-> new IllegalArgumentException("El producto con el id [" + id + "] no existe.")
 		);
 	}//getProduct
 	
-	public Producto deletProduct(Long id) {
+	public Producto deletProduct(Integer id) {
 		Producto prod = null;
 		if(productosRepository.existsById(id)) {
 		prod = productosRepository.findById(id).get();
@@ -49,7 +49,7 @@ public class ProductosService {
 		}
 	}//addProducto
 	
-	public Producto updateProduct(Long id, String nombre, String descripcion, Double precio) {
+	public Producto updateProduct(Integer id, String nombre, String descripcion, Double precio) {
 		Producto prod = null;
 		if (productosRepository.existsById(id)) {
 			Producto producto = productosRepository.findById(id).get();

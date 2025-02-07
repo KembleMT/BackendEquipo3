@@ -13,15 +13,15 @@ import javax.persistence.Table;
 public class CarritoProducto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_carrito_producto;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Asegura que el ID sea generado automáticamente
+    private Integer id_carrito_producto;  // Cambié Long por Integer para coincidir con la base de datos
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario_fk", nullable = false)
+    @JoinColumn(name = "id_usuario_fk", nullable = false) // Relación con la tabla 'Usuarios'
     private Usuarios usuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_producto_fk", nullable = false)
+    @JoinColumn(name = "id_producto_fk", nullable = false) // Relación con la tabla 'Productos'
     private Producto producto;
 
     private int cantidad;
@@ -31,18 +31,17 @@ public class CarritoProducto {
 
     // Constructor con parámetros
     public CarritoProducto(Usuarios usuario, Producto producto, int cantidad) {
-    	super();
         this.usuario = usuario;
         this.producto = producto;
         this.cantidad = cantidad;
     }
 
     // Getters y Setters
-    public Long getId_carrito_producto() {
+    public Integer getId_carrito_producto() {
         return id_carrito_producto;
     }
 
-    public void setId_carrito_producto(Long id_carrito_producto) {
+    public void setId_carrito_producto(Integer id_carrito_producto) {
         this.id_carrito_producto = id_carrito_producto;
     }
 
@@ -70,11 +69,9 @@ public class CarritoProducto {
         this.cantidad = cantidad;
     }
 
-	@Override
-	public String toString() {
-		return "CarritoProducto [id_carrito_producto=" + id_carrito_producto + ", usuario=" + usuario + ", producto="
-				+ producto + ", cantidad=" + cantidad + "]";
-	}
-    
-    
+    @Override
+    public String toString() {
+        return "CarritoProducto [id_carrito_producto=" + id_carrito_producto + ", usuario=" + usuario + ", producto="
+                + producto + ", cantidad=" + cantidad + "]";
+    }
 }

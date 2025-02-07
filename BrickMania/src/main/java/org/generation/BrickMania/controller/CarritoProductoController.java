@@ -23,7 +23,7 @@ public class CarritoProductoController {
     }
 
     @GetMapping("/{id}")
-    public Optional<CarritoProducto> getCarritoProductoById(@PathVariable Long id) {
+    public Optional<CarritoProducto> getCarritoProductoById(@PathVariable Integer id) {
         return carritoProductoService.getCarritoProductoById(id);
     }
 
@@ -33,7 +33,7 @@ public class CarritoProductoController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCarritoProducto(@PathVariable Long id) {
+    public void deleteCarritoProducto(@PathVariable Integer id) {
         carritoProductoService.deleteCarritoProducto(id);
     }
 }
