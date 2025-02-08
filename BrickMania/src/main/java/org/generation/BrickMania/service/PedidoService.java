@@ -22,7 +22,7 @@ public class PedidoService {
         return pedidoRepository.findAll();
     }//getAll
 
-    public Pedido getPedidoById(Long id) {
+    public Pedido getPedidoById(Integer id) {
         return pedidoRepository.findById(id).orElse(null);
     }//get
 
@@ -30,7 +30,7 @@ public class PedidoService {
         return pedidoRepository.save(pedido);
     }//add
 
-    public Pedido updatePedido(Long id, Pedido pedidoUpdated) {
+    public Pedido updatePedido(Integer id, Pedido pedidoUpdated) {
         Optional<Pedido> optional = pedidoRepository.findById(id);
         if (optional.isPresent()) {
             Pedido pedido = optional.get();
@@ -43,7 +43,7 @@ public class PedidoService {
         return null;
     }//update
 
-    public void deletePedido(Long id) {
+    public void deletePedido(Integer id) {
         pedidoRepository.deleteById(id);
     }//delete
 }

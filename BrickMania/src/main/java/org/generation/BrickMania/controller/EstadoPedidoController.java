@@ -25,7 +25,7 @@ public class EstadoPedidoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EstadoPedido> getEstadoById(@PathVariable("id") Long id) {
+    public ResponseEntity<EstadoPedido> getEstadoById(@PathVariable("id") Integer id) {
         EstadoPedido estado = estadoPedidoService.getEstadoById(id);
         return estado != null ? ResponseEntity.ok(estado) : ResponseEntity.notFound().build();
     }
@@ -36,13 +36,13 @@ public class EstadoPedidoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EstadoPedido> updateEstado(@PathVariable("id") Long id, @RequestBody EstadoPedido estadoPedido) {
+    public ResponseEntity<EstadoPedido> updateEstado(@PathVariable("id") Integer id, @RequestBody EstadoPedido estadoPedido) {
         EstadoPedido updated = estadoPedidoService.updateEstado(id, estadoPedido);
         return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEstado(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> deleteEstado(@PathVariable("id") Integer id) {
         estadoPedidoService.deleteEstado(id);
         return ResponseEntity.ok().build();
     } //revisar si hay que eliminar junto con id de usuario
