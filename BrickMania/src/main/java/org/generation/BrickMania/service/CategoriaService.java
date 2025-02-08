@@ -20,7 +20,7 @@ public class CategoriaService {
         return categoriaRepository.findAll();
     }
 
-    public Optional<Categoria> getCategoriaById(Long id) {
+    public Optional<Categoria> getCategoriaById(Integer id) { // Cambiado de Long a Integer
         return categoriaRepository.findById(id);
     }
 
@@ -28,7 +28,7 @@ public class CategoriaService {
         return categoriaRepository.save(categoria);
     }
 
-    public void deleteCategoria(Long id) {
+    public void deleteCategoria(Integer id) {
         categoriaRepository.deleteById(id);
     }
 }

@@ -9,7 +9,7 @@ public class DetallePedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_detalle")
-    private Long id;
+    private Integer id; // Correccion de Long por Integer
 
     @Column(name = "cantidad", nullable = false)
     private int cantidad;
@@ -29,7 +29,7 @@ public class DetallePedido {
     }
 
     // Getters y Setters
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 

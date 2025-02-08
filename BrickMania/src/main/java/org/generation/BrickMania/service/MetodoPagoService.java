@@ -22,7 +22,7 @@ public class MetodoPagoService {
         return metodoPagoRepository.findAll();
     }
 
-    public MetodoPago getMetodoById(Long id) {
+    public MetodoPago getMetodoById(Integer id) {
         Optional<MetodoPago> optional = metodoPagoRepository.findById(id);
         return optional.orElse(null);
     }
@@ -31,7 +31,7 @@ public class MetodoPagoService {
         return metodoPagoRepository.save(metodoPago);
     }
 
-    public MetodoPago updateMetodo(Long id, MetodoPago metodoPagoUpdated) {
+    public MetodoPago updateMetodo(Integer id, MetodoPago metodoPagoUpdated) {
         Optional<MetodoPago> optional = metodoPagoRepository.findById(id);
         if (optional.isPresent()) {
             MetodoPago metodoPago = optional.get();
@@ -42,7 +42,7 @@ public class MetodoPagoService {
         return null;
     }
 
-    public void deleteMetodo(Long id) {
+    public void deleteMetodo(Integer id) {
         metodoPagoRepository.deleteById(id);
     }
 }

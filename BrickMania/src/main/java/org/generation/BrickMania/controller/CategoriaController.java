@@ -23,7 +23,7 @@ public class CategoriaController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Categoria> getCategoriaById(@PathVariable Long id) {
+    public Optional<Categoria> getCategoriaById(@PathVariable Integer id) {
         return categoriaService.getCategoriaById(id);
     }
 
@@ -33,7 +33,7 @@ public class CategoriaController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCategoria(@PathVariable Long id) {
+    public void deleteCategoria(@PathVariable Integer id) {
         categoriaService.deleteCategoria(id);
     }
 }

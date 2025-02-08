@@ -22,7 +22,7 @@ public class DetallePedidoService {
         return detallePedidoRepository.findAll();
     }
 
-    public DetallePedido getDetalleById(Long id) {
+    public DetallePedido getDetalleById(Integer id) {
         Optional<DetallePedido> optional = detallePedidoRepository.findById(id);
         return optional.orElse(null);
     }
@@ -31,7 +31,7 @@ public class DetallePedidoService {
         return detallePedidoRepository.save(detallePedido);
     }
 
-    public DetallePedido updateDetalle(Long id, DetallePedido detallePedidoUpdated) {
+    public DetallePedido updateDetalle(Integer id, DetallePedido detallePedidoUpdated) {
         Optional<DetallePedido> optional = detallePedidoRepository.findById(id);
         if (optional.isPresent()) {
             DetallePedido detallePedido = optional.get();
@@ -43,7 +43,7 @@ public class DetallePedidoService {
         return null;
     }
 
-    public void deleteDetalle(Long id) {
+    public void deleteDetalle(Integer id) {
         detallePedidoRepository.deleteById(id);
     }
 }

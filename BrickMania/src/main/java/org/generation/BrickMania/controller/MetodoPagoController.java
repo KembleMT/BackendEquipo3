@@ -25,7 +25,7 @@ public class MetodoPagoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MetodoPago> getMetodoById(@PathVariable("id") Long id) {
+    public ResponseEntity<MetodoPago> getMetodoById(@PathVariable("id") Integer id) {
         MetodoPago metodo = metodoPagoService.getMetodoById(id);
         return metodo != null ? ResponseEntity.ok(metodo) : ResponseEntity.notFound().build();
     }
@@ -36,13 +36,13 @@ public class MetodoPagoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MetodoPago> updateMetodo(@PathVariable("id") Long id, @RequestBody MetodoPago metodoPago) {
+    public ResponseEntity<MetodoPago> updateMetodo(@PathVariable("id") Integer id, @RequestBody MetodoPago metodoPago) {
         MetodoPago updated = metodoPagoService.updateMetodo(id, metodoPago);
         return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMetodo(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> deleteMetodo(@PathVariable("id") Integer id) {
         metodoPagoService.deleteMetodo(id);
         return ResponseEntity.ok().build();
     }

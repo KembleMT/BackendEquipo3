@@ -6,11 +6,11 @@ import java.util.Optional;
 import org.generation.BrickMania.producto.model.MetodoPago;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MetodoPagoRepository extends JpaRepository<MetodoPago, Long> {
+public interface MetodoPagoRepository extends JpaRepository<MetodoPago, Integer> {
 
     List<MetodoPago> findAll();
 
-    Optional<MetodoPago> findById(Long id);
+    Optional<MetodoPago> findById(Integer id);
 
     @SuppressWarnings("unchecked")
     MetodoPago save(MetodoPago metodoPago);

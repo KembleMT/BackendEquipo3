@@ -13,7 +13,7 @@ public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_categoria;
+    private Integer id_categoria; //Correccion de Long por Integer
 
     @Column(name = "nombre_categoria", nullable = false, unique = true)
     private String nombre_categoria;
@@ -27,11 +27,11 @@ public class Categoria {
     }
 
     // Getters y Setters
-    public Long getId_categoria() {
+    public Integer getId_categoria() {
         return id_categoria;
     }
 
-    public void setId_categoria(Long id_categoria) {
+    public void setId_categoria(Integer id_categoria) {
         this.id_categoria = id_categoria;
     }
 

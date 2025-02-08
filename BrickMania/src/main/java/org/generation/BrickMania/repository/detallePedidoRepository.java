@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.generation.BrickMania.producto.model.DetallePedido;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface detallePedidoRepository extends JpaRepository<DetallePedido, Long> {
+public interface detallePedidoRepository extends JpaRepository<DetallePedido, Integer> {
 
     List<DetallePedido> findAll();
 

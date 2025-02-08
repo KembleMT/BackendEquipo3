@@ -25,7 +25,7 @@ public class DetallePedidoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DetallePedido> getDetalleById(@PathVariable("id") Long id) {
+    public ResponseEntity<DetallePedido> getDetalleById(@PathVariable("id") Integer id) {
         DetallePedido detalle = detallePedidoService.getDetalleById(id);
         return detalle != null ? ResponseEntity.ok(detalle) : ResponseEntity.notFound().build();
     }
@@ -36,13 +36,13 @@ public class DetallePedidoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DetallePedido> updateDetalle(@PathVariable("id") Long id, @RequestBody DetallePedido detallePedido) {
+    public ResponseEntity<DetallePedido> updateDetalle(@PathVariable("id") Integer id, @RequestBody DetallePedido detallePedido) {
         DetallePedido updated = detallePedidoService.updateDetalle(id, detallePedido);
         return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteDetalle(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> deleteDetalle(@PathVariable("id") Integer id) {
         detallePedidoService.deleteDetalle(id);
         return ResponseEntity.ok().build();
     }

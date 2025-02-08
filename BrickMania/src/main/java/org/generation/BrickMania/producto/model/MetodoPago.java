@@ -9,7 +9,7 @@ public class MetodoPago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_metodo")
-    private Long id;
+    private Integer id;
 
     @Column(name = "metodo", nullable = false, unique = true, length = 50)
     private String metodo;
@@ -25,7 +25,7 @@ public class MetodoPago {
     }
 
     // Getters y Setters
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
