@@ -10,12 +10,12 @@ import javax.persistence.Table;
 public class Usuarios {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String nombre;
 	private String email;
 	private String contraseña;
 	private String direccion;
-	private Long id_rol_fk;
+	private Integer id_rol_fk;
 	
 	
 	

@@ -26,7 +26,7 @@ public class UsersController {
 
     // 2. Obtener un usuario por ID
     @GetMapping(path = "{userId}")
-    public Usuarios getUsuario(@PathVariable("userId") Long id) {
+    public Usuarios getUsuario(@PathVariable("userId") Integer id) {
         return usuariosService.getUsuario(id);
     }
 
@@ -38,13 +38,13 @@ public class UsersController {
 
     // 4. Eliminar un usuario por ID
     @DeleteMapping(path = "{userId}")
-    public Usuarios deleteUsuario(@PathVariable("userId") Long id) {
+    public Usuarios deleteUsuario(@PathVariable("userId") Integer id) {
         return usuariosService.deleteUsuario(id);
     }
 
     // 5. Actualizar usuario (ejemplo: cambiar contraseña)
     @PutMapping(path = "{userId}")
-    public Usuarios updateUsuario(@PathVariable("userId") Long id, @RequestBody Usuarios usuario) {
+    public Usuarios updateUsuario(@PathVariable("userId") Integer id, @RequestBody Usuarios usuario) {
         return usuariosService.updateUsuario(id, usuario);
     }
 }

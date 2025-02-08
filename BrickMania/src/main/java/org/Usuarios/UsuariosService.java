@@ -13,13 +13,13 @@ public class UsuariosService {
 		this.usuariosRepository = usuariosRepository;
 	}//Autowired UsuariosService
 	
-	public Usuario getUsuarios (Long id){
+	public Usuario getUsuarios (Integer id){
 		return UsuariosRepository.findById(id).orElseThrow(
 		()-> new IllegalArgumentException("El usuario con el id [" + id + "] no existe.")
 		);
 	}//getUsuario
 	
-	public Usuario deletUsuarios(Long id) {
+	public Usuario deletUsuarios(Integer id) {
 		Usuario usua = null;
 		if(usuariosRepository.existsById(id)) {
 		usua = usuariosRepository.findById(id).get();
@@ -39,8 +39,8 @@ public class UsuariosService {
 		}
 	}//addUsuario
 	
-	public Usuario updateUsuarios(Long id, String nombre, String email, String contraseña, String direccion,
-			Long id_rol_fk) {
+	public Usuario updateUsuarios(Integer id, String nombre, String email, String contraseña, String direccion,
+	Integer id_rol_fk) {
 		Usuario usua = null;
 		if (usuariosRepository.existsById(id)) {
 			Usuario usuario = usuariosRepository.findById(id).get();
