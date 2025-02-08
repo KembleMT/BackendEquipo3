@@ -1,16 +1,24 @@
 package org.generation.BrickMania.producto.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Pedido")
+@Table(name = "Pedidos")
 public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pedido")
-    private Long id;
+    private Integer id;
 
     // Relación con Usuario: un pedido pertenece a un usuario.
     @ManyToOne
@@ -26,13 +34,14 @@ public class Pedido {
     @Column(name = "id_metodo_fk", nullable = false)
     private Integer idMetodoFk;
 
-    @Column(name = "id_estado_fk", nullable = false)
-    private String idEstadoFk;
+    @ManyToOne
+    @JoinColumn(name = "id_estado_fk", nullable = false)
+    private Integer idEstadoFk;
 
     // Constructores
     public Pedido() {}
 
-    public Pedido(Usuarios usuario, Double totalPago, LocalDate fechaCompra, Integer idMetodoFk, String idEstadoFk) {
+    public Pedido(Usuarios usuario, Double totalPago, LocalDate fechaCompra, Integer idMetodoFk, Integer idEstadoFk) {
         super();
     	this.usuario = usuario;
         this.totalPago = totalPago;
@@ -42,7 +51,7 @@ public class Pedido {
     }
 
     // Getters y Setters
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
     public Usuarios getUsuario() {
@@ -66,10 +75,10 @@ public class Pedido {
     public void setIdMetodoFk(Integer idMetodoFk) {
         this.idMetodoFk = idMetodoFk;
     }
-    public String getIdEstadoFk() {
+    public Integer getIdEstadoFk() {
         return idEstadoFk;
     }
-    public void setIdEstadoFk(String idEstadoFk) {
+    public void setIdEstadoFk(Integer idEstadoFk) {
         this.idEstadoFk = idEstadoFk;
     }
      

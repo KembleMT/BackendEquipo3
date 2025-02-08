@@ -22,7 +22,7 @@ public class EstadoPedidoService {
         return estadoPedidoRepository.findAll();
     }
 
-    public EstadoPedido getEstadoById(Long id) {
+    public EstadoPedido getEstadoById(Integer id) {
         Optional<EstadoPedido> optional = estadoPedidoRepository.findById(id);
         return optional.orElse(null);
     }
@@ -31,7 +31,7 @@ public class EstadoPedidoService {
         return estadoPedidoRepository.save(estadoPedido);
     }
 
-    public EstadoPedido updateEstado(Long id, EstadoPedido estadoPedidoUpdated) {
+    public EstadoPedido updateEstado(Integer id, EstadoPedido estadoPedidoUpdated) {
         Optional<EstadoPedido> optional = estadoPedidoRepository.findById(id);
         if (optional.isPresent()) {
             EstadoPedido estadoPedido = optional.get();
@@ -41,7 +41,7 @@ public class EstadoPedidoService {
         return null;
     }
 
-    public void deleteEstado(Long id) {
+    public void deleteEstado(Integer id) {
         estadoPedidoRepository.deleteById(id);
     }//revisar un if en caso de que se elimine el usuario asociado a este pedido
 }

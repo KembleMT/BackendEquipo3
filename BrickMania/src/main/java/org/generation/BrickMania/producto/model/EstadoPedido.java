@@ -1,6 +1,11 @@
 package org.generation.BrickMania.producto.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "Estados_Pedido")
@@ -9,7 +14,7 @@ public class EstadoPedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_estado")
-    private Long id;
+    private Integer id;
 
     @Column(name = "estado", nullable = false, unique = true, length = 50)
     private String estado;
@@ -25,7 +30,7 @@ public class EstadoPedido {
     }
 
     // Getters y Setters
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
