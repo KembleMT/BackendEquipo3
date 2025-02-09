@@ -24,14 +24,14 @@ public class UsuariosService {
     }
 
     // 2. Obtener un usuario por ID
-    public Usuarios getUsuario(Long id) {
+    public Usuarios getUsuario(Integer id) {
         return usuariosRepository.findById(id).orElseThrow(
             () -> new IllegalArgumentException("El usuario con el id [" + id + "] no existe.")
         );
     }
 
     // 3. Eliminar un usuario por ID
-    public Usuarios deleteUsuario(Long id) {
+    public Usuarios deleteUsuario(Integer id) {
         Usuarios usuario = null;
         if (usuariosRepository.existsById(id)) {
             usuario = usuariosRepository.findById(id).get();
@@ -51,7 +51,7 @@ public class UsuariosService {
     }
 
     // 5. Actualizar usuario
-    public Usuarios updateUsuario(Long id, Usuarios usuario) {
+    public Usuarios updateUsuario(Integer id, Usuarios usuario) {
         if (usuariosRepository.existsById(id)) {
             Usuarios existingUsuario = usuariosRepository.findById(id).get();
             if (usuario.getNombre() != null) existingUsuario.setNombre(usuario.getNombre());

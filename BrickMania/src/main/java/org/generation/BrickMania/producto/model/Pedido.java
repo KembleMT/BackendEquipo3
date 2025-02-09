@@ -1,14 +1,6 @@
 package org.generation.BrickMania.producto.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -34,60 +26,74 @@ public class Pedido {
     @Column(name = "id_metodo_fk", nullable = false)
     private Integer idMetodoFk;
 
+    // Corrección: Cambio de Integer a EstadoPedido para la relación ManyToOne
     @ManyToOne
     @JoinColumn(name = "id_estado_fk", nullable = false)
-    private Integer idEstadoFk;
+    private EstadoPedido estadoPedido;
 
     // Constructores
     public Pedido() {}
 
-    public Pedido(Usuarios usuario, Double totalPago, LocalDate fechaCompra, Integer idMetodoFk, Integer idEstadoFk) {
+    public Pedido(Usuarios usuario, Double totalPago, LocalDate fechaCompra, Integer idMetodoFk, EstadoPedido estadoPedido) {
         super();
-    	this.usuario = usuario;
+        this.usuario = usuario;
         this.totalPago = totalPago;
         this.fechaCompra = fechaCompra;
         this.idMetodoFk = idMetodoFk;
-        this.idEstadoFk = idEstadoFk;
+        this.estadoPedido = estadoPedido;
     }
 
     // Getters y Setters
     public Integer getId() {
         return id;
     }
+
     public Usuarios getUsuario() {
         return usuario;
     }
+
+    public void setUsuario(Usuarios usuario) {
+        this.usuario = usuario;
+    }
+
     public Double getTotalPago() {
         return totalPago;
     }
+
     public void setTotalPago(Double totalPago) {
         this.totalPago = totalPago;
     }
+
     public LocalDate getFechaCompra() {
         return fechaCompra;
     }
+
     public void setFechaCompra(LocalDate fechaCompra) {
         this.fechaCompra = fechaCompra;
     }
+
     public Integer getIdMetodoFk() {
         return idMetodoFk;
     }
+
     public void setIdMetodoFk(Integer idMetodoFk) {
         this.idMetodoFk = idMetodoFk;
     }
-    public Integer getIdEstadoFk() {
-        return idEstadoFk;
+
+    public EstadoPedido getEstadoPedido() {
+        return estadoPedido;
     }
-    public void setIdEstadoFk(Integer idEstadoFk) {
-        this.idEstadoFk = idEstadoFk;
+
+    public void setEstadoPedido(EstadoPedido estadoPedido) {
+        this.estadoPedido = estadoPedido;
     }
-     
-    //toString
-	@Override
-	public String toString() {
-		return "Pedido [id=" + id + ", totalPago=" + totalPago + ", fechaCompra=" + fechaCompra + ", idMetodoFk="
-				+ idMetodoFk + ", idEstadoFk=" + idEstadoFk + "]";
-	}
-    
-    
+
+    // toString
+    @Override
+    public String toString() {
+        return "Pedido [id=" + id + ", usuario=" + usuario + ", totalPago=" + totalPago 
+                + ", fechaCompra=" + fechaCompra + ", idMetodoFk=" + idMetodoFk 
+                + ", estadoPedido=" + estadoPedido + "]";
+    }
 }
+

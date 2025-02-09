@@ -37,7 +37,6 @@ public class PedidoService {
             pedido.setTotalPago(pedidoUpdated.getTotalPago());
             pedido.setFechaCompra(pedidoUpdated.getFechaCompra());
             pedido.setIdMetodoFk(pedidoUpdated.getIdMetodoFk());
-            pedido.setIdEstadoFk(pedidoUpdated.getIdEstadoFk());
             return pedidoRepository.save(pedido);
         }//if
         return null;
