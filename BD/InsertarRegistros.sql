@@ -21,8 +21,8 @@ INSERT INTO Usuarios (nombre, email, contraseña, direccion, id_rol_fk) VALUES
 
 -- Insertando categorías
 INSERT INTO Categorias (nombre_categoria) VALUES
-('Lego City'), ('Lego Star Wars'), ('Lego Technic'), ('Lego Friends'), ('Lego Harry Potter'),
-('Lego Ninjago'), ('Lego Creator'), ('Lego Duplo'), ('Lego Marvel'), ('Lego DC Comics');
+('Niños'), ('Adolescentes'), ('Adultos'), ('Principiante'), ('Intermedio'),
+('Avanzado'), ('Navidad'), ('Amor y amistad');
 
 -- Insertando productos
 INSERT INTO Productos (nombre_producto, descripcion, precio_producto, id_categoria_fk) VALUES
