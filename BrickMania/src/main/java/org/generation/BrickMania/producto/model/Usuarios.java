@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Entity
 @Table(name = "Usuarios")
 public class Usuarios {
@@ -22,9 +24,17 @@ public class Usuarios {
 	public Usuarios(String nombre, String email, String contraseña, String direccion) {
 		this.nombre = nombre;
 		this.email = email;
-		this.contraseña = contraseña;
+		this.contraseña = new BCryptPasswordEncoder().encode(contraseña);
 		this.direccion = direccion;
 	}
+	
+	public void setPassword(String password) {
+        this.contraseña = new BCryptPasswordEncoder().encode(password);
+    }
+
+    public boolean comparePassword(String rawPassword) {
+        return new BCryptPasswordEncoder().matches(rawPassword, this.contraseña);
+    }
 
 	public String getNombre() {
 		return nombre;
@@ -42,8 +52,13 @@ public class Usuarios {
 		return contraseña;
 	}
 	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	    if (!contraseña.startsWith("$2a$")) { // Evita encriptar si ya está encriptado
+	        this.contraseña = new BCryptPasswordEncoder().encode(contraseña);
+	    } else {
+	        this.contraseña = contraseña;
+	    }
 	}
+
 	public String getDireccion() {
 		return direccion;
 	}
@@ -55,6 +70,14 @@ public class Usuarios {
 	public String toString() {
 		return "Usuarios [id=" + id + ", nombre=" + nombre + ", email=" + email + ", contraseña=" + contraseña
 				+ ", direccion=" + direccion + ", id_rol_fk=" + id_rol_fk + "]";
+	}
+
+	public Object getPassword() {
+		return null;
+	}
+
+	public boolean comparePassword1(String contraseña2) {
+		return false;
 	}
 
 

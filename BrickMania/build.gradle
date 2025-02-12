@@ -30,15 +30,21 @@ dependencies {
 	// Dependencia para validaciones con anotaciones
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-	// Dependencia opcional para autenticación (si la necesitan)
-	// implementation 'org.springframework.boot:spring-boot-starter-security'
+	// Dependencia opcional para autenticación
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security:spring-security-crypto'
+    
 
-	// JWT para autenticación con tokens (si lo usan)
-	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	// JWT para autenticación con tokens
+    implementation 'io.jsonwebtoken:jjwt:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+	
 
 	// Dependencias para pruebas
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	
 }
 
 tasks.named('test') {
