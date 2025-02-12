@@ -44,6 +44,10 @@ public class UsuariosService {
     public Usuarios addUsuario(Usuarios usuario) {
         Optional<Usuarios> existingUsuario = usuariosRepository.findByEmail(usuario.getEmail());
         if (existingUsuario.isEmpty()) {
+            // Asegurar que id_rol_fk sea 2 por defecto
+            if (usuario.getId_rol_fk() == null) {
+                usuario.setId_rol_fk(2);
+            }
             return usuariosRepository.save(usuario);
         } else {
             return null; 
@@ -63,12 +67,9 @@ public class UsuariosService {
         return null;
     }
 
-    // 6. Validar usuario por email y contraseña
+    // 6. Validar usuario por email y contraseña (corrigiendo validación con BCrypt)
     public boolean validateUser(Usuarios usuario) {
         Optional<Usuarios> existingUsuario = usuariosRepository.findByEmail(usuario.getEmail());
-        if (existingUsuario.isPresent()) {
-            return existingUsuario.get().getContraseña().equals(usuario.getContraseña());
-        }
-        return false;
+        return existingUsuario.isPresent() && existingUsuario.get().comparePassword(usuario.getContraseña());
     }
 }

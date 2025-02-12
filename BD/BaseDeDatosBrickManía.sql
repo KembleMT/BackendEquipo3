@@ -104,3 +104,7 @@ CREATE TABLE `Carrito_Productos` (
 
 ALTER TABLE usuarios DROP COLUMN id;
 
+ALTER TABLE Usuarios 
+MODIFY COLUMN id_rol_fk INT UNSIGNED NOT NULL DEFAULT 2;
+
+

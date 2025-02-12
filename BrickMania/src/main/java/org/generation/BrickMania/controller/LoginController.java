@@ -25,7 +25,7 @@ public class LoginController {
     public ResponseEntity<?> login(@RequestBody Usuarios usuario) {
         Optional<Usuarios> user = usuariosRepository.findByEmail(usuario.getEmail());
 
-        if (user == null || !user.get().comparePassword1(usuario.getContraseña())) {
+        if (user == null || !user.get().comparePassword(usuario.getContraseña())) {
             return ResponseEntity.status(401).body("Credenciales incorrectas");
         }
 

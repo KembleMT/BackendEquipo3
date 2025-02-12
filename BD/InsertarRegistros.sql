@@ -3,8 +3,7 @@ USE BrickMania;
 
 -- Insertando roles
 INSERT INTO Roles (nombre_rol) VALUES
-('Administrador'), ('Cliente'), ('Vendedor'), ('Soporte'), ('Supervisor'),
-('Gestor'), ('Contador'), ('Repartidor'), ('Diseñador'), ('Marketing');
+('ADMIN'), ('USER');
 
 -- Insertando usuarios
 INSERT INTO Usuarios (nombre, email, contraseña, direccion, id_rol_fk) VALUES
