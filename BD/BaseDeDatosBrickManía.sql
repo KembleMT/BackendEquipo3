@@ -101,3 +101,6 @@ CREATE TABLE `Carrito_Productos` (
     FOREIGN KEY (`id_usuario_fk`) REFERENCES `Usuarios`(`id_usuario`) ON DELETE CASCADE,
     FOREIGN KEY (`id_producto_fk`) REFERENCES `Productos`(`id_producto`) ON DELETE CASCADE
 );
+
+ALTER TABLE usuarios DROP COLUMN id;
+

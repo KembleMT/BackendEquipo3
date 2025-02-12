@@ -1,9 +1,11 @@
 package org.generation.BrickMania.producto.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,20 +14,27 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class Usuarios {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
 	private Integer id;
 	private String nombre;
 	private String email;
 	private String contraseña;
 	private String direccion;
+	
+    @JoinColumn(name = "id_rol_fk", nullable = true)
 	private Integer id_rol_fk;
 	
 	
-	
-	public Usuarios(String nombre, String email, String contraseña, String direccion) {
+	public Usuarios() {
+	}
+
+	public Usuarios(String nombre, String email, String contraseña, String direccion, Integer id_rol_fk) {
+		super();
 		this.nombre = nombre;
 		this.email = email;
 		this.contraseña = new BCryptPasswordEncoder().encode(contraseña);
 		this.direccion = direccion;
+		this.id_rol_fk = id_rol_fk;
 	}
 	
 	public void setPassword(String password) {
@@ -65,6 +74,15 @@ public class Usuarios {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
+	
+	public Integer getId_rol_fk() {
+	    return id_rol_fk;
+	}
+
+	public void setId_rol_fk(Integer id_rol_fk) {
+	    this.id_rol_fk = id_rol_fk;
+	}
+
 
 	@Override
 	public String toString() {

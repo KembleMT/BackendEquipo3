@@ -22,9 +22,9 @@ public class SecurityConfig {
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeRequests()
-                .antMatchers("/api/login").permitAll()
-                .antMatchers("/api/registro").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/api/login", "/api/usuarios/").permitAll() // Permitir login y registro
+                .antMatchers("/api/productos/**").permitAll() // Permitir ver productos
+                .anyRequest().authenticated() // Proteger otros endpoints
             .and()
             .addFilterBefore(new JwtFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);
 
