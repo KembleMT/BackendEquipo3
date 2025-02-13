@@ -27,6 +27,7 @@ public class LoginController {
     public ResponseEntity<?> login(@RequestBody Login loginRequest) {
         System.out.println("Intento de login con email: " + loginRequest.getEmail());
 
+
         Optional<Usuarios> user = usuariosRepository.findByEmail(loginRequest.getEmail());
 
         if (!user.isPresent()) {
