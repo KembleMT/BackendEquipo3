@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.generation.BrickMania.producto.model.Usuarios;
 import org.generation.BrickMania.repository.UsuariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -44,6 +45,11 @@ public class UsuariosService {
     public Usuarios addUsuario(Usuarios usuario) {
         Optional<Usuarios> existingUsuario = usuariosRepository.findByEmail(usuario.getEmail());
         if (existingUsuario.isEmpty()) {
+            //Hasheamos la contraseña ANTES de guardarla en la base de datos
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            String hashedPassword = encoder.encode(usuario.getContraseña()); // Encripta la contraseña
+            usuario.setContraseña(hashedPassword); // Guarda el hash en el usuario
+
             return usuariosRepository.save(usuario);
         } else {
             return null; 

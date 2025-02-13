@@ -25,4 +25,5 @@ public class Login {
 	public String toString() {
 		return "Login [email=" + email + ", password=" + password + "]";
 	}
+
 }

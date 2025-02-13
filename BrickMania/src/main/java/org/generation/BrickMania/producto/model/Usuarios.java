@@ -89,15 +89,15 @@ public class Usuarios {
 		return "Usuarios [id=" + id + ", nombre=" + nombre + ", email=" + email + ", contraseña=" + contraseña
 				+ ", direccion=" + direccion + ", id_rol_fk=" + id_rol_fk + "]";
 	}
-
-	public Object getPassword() {
-		return null;
+	
+	public String getPassword() {
+	    return this.contraseña;
 	}
 
-	public boolean comparePassword1(String contraseña2) {
-		return false;
+	public boolean comparePassword1(String rawPassword) {
+	    return new BCryptPasswordEncoder().matches(rawPassword, this.contraseña);
 	}
-
+	
 
 }
 

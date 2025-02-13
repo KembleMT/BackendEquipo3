@@ -22,7 +22,7 @@ public class SecurityConfig {
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeRequests()
-                .antMatchers("/api/login", "/api/usuarios/").permitAll() // Permitir login y registro
+                .antMatchers("/api/login/**", "/api/usuarios/").permitAll() // Permitir login y registro
                 .antMatchers("/api/productos/**").permitAll() // Permitir ver productos
                 .anyRequest().authenticated() // Proteger otros endpoints
             .and()
