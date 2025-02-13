@@ -40,14 +40,21 @@ public class ProductosService {
 	}//delet
 
 	public Producto addProduct(Producto producto) {
-    	Optional<Producto> prod = productosRepository.findByNombre(producto.getNombre());	
-		if(prod.isEmpty()) {
-    	    productosRepository.save(producto);
-			return producto;
-	} else {
-		return null;
-		}
-	}//addProducto
+	    Optional<Producto> prod = productosRepository.findByNombre(producto.getNombre());	
+	    if (prod.isEmpty()) {
+	        Producto nuevoProducto = new Producto(
+	            producto.getNombre(),
+	            producto.getDescripcion(),
+	            producto.getPrecio(),
+	            producto.getCategoria(),
+	            producto.getImagenUrl() // ✅ Asegura que la imagen se guarde
+	        );
+	        return productosRepository.save(nuevoProducto);
+	    } else {
+	        return null;
+	    }
+	}
+//addProducto
 	
 	public Producto updateProduct(Integer id, String nombre, String descripcion, Double precio) {
 		Producto prod = null;
