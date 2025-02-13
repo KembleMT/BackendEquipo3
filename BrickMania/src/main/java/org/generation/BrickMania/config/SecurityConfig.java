@@ -10,24 +10,31 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfig {
 
-    private final JwtUtil jwtUtil;
+//    private final JwtUtil jwtUtil;
+//
+//    public SecurityConfig(JwtUtil jwtUtil) {
+//        this.jwtUtil = jwtUtil;
+//    }
 
-    public SecurityConfig(JwtUtil jwtUtil) {
-        this.jwtUtil = jwtUtil;
-    }
-
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http.csrf().disable()
+//            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//            .and()
+//            .authorizeRequests()
+//                .antMatchers("/api/login/**", "/api/usuarios/").permitAll() // Permitir login y registro
+//                .antMatchers("/api/productos/**").permitAll() // Permitir ver productos
+//                .anyRequest().authenticated() // Proteger otros endpoints
+//            .and()
+//            .addFilterBefore(new JwtFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);
+//
+//        return http.build();
+//    }
+    
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
-            .authorizeRequests()
-                .antMatchers("/api/login/**", "/api/usuarios/").permitAll() // Permitir login y registro
-                .antMatchers("/api/productos/**").permitAll() // Permitir ver productos
-                .anyRequest().authenticated() // Proteger otros endpoints
-            .and()
-            .addFilterBefore(new JwtFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);
-
+            .authorizeHttpRequests(authorize -> authorize.anyRequest().permitAll());
         return http.build();
     }
 }
