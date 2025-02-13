@@ -14,8 +14,9 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**") // Permite las rutas que empiezan con /api/
-                        .allowedOrigins("http://127.0.0.1:5501") // Tu dirección de pruebas en VSC
-                        .allowedMethods("GET", "POST", "PUT", "DELETE"); // Métodos permitidos
+                        .allowedOrigins("http://127.0.0.1:5501", "http://localhost:5501") // Direcciones permitidas
+                        .allowedMethods("GET", "POST", "PUT", "DELETE") // Métodos permitidos
+                        .allowCredentials(true); // Asegura compatibilidad con CORS
             }
         };
     }
