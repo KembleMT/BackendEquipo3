@@ -85,14 +85,6 @@ INSERT INTO Carrito_Productos (id_usuario_fk, id_producto_fk, cantidad) VALUES
 (9, 6, 1),
 (10, 4, 3);
 
-INSERT INTO Usuarios (nombre, email, contraseña, direccion, id_rol_fk) VALUES
-('Maria Perez', 'maria.perez@gmail.com', '$2a$10$V2TCdomycDxQLkUVMDzWZuu7b5thx2Yl1SBPZErSl.q4MyPbme17m', 'Av. Siempre Viva 123', 2);
-DELETE FROM usuarios WHERE email = 'maria.perez@gmail.com';
-SELECT contraseña FROM usuarios WHERE email = 'maria.perez@gmail.com';
-UPDATE usuarios 
-SET contraseña = '$2a$10$V2TCdomycDxQLkUVMDzWZuu7b5thx2Yl1SBPZErSl.q4MyPbme17m'
-WHERE email = 'maria.perez@gmail.com';
-
 SELECT * FROM carrito_productos;
 SELECT * FROM categorias;
 SELECT * FROM detalle_pedido;
