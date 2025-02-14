@@ -40,19 +40,6 @@ function agregarProducto(item, containerId) {
             </div>
         </div>`;
 
-        document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll(".card").forEach(card => {
-                card.addEventListener("mouseenter", () => {
-                    card.classList.add("expanded");
-                });
-        
-                card.addEventListener("mouseleave", () => {
-                    card.classList.remove("expanded");
-                });
-            });
-        });
-        
-
     // Obtener el contenedor y agregar el producto
     const itemsContainer = document.getElementById(containerId);
     if (itemsContainer) {
@@ -138,8 +125,6 @@ const productosAmorAmistad = [
 ];
 
 
-
-
 // Agregar productos a las categorías correspondientes
 productosKids.forEach(product => agregarProducto(product, 'productos_niños'));
 productosTeens.forEach(product => agregarProducto(product, 'productos_Adolescentes'));
@@ -149,3 +134,40 @@ productosNivelMid.forEach(product => agregarProducto(product, 'productos_Interme
 productosNivelSenior.forEach(product => agregarProducto(product, 'productos_Avanzado'));
 productosNavidad.forEach(product => agregarProducto(product, 'productos_Navidad'));
 productosAmorAmistad.forEach(product => agregarProducto(product, 'productos_AmorAmistad'));
+
+function agregarEfectoHover() {
+    document.querySelectorAll(".card").forEach(card => {
+        let timeout; // Almacena el timeout actual para esta tarjeta
+        let debounceTimeout;
+        let isExpanded = false; // Variable para rastrear el estado de la tarjeta
+
+        card.addEventListener("mouseenter", () => {
+            if (!isExpanded) {
+                debounceTimeout = setTimeout(() => {
+                    card.classList.add("expanded");
+                    isExpanded = true;
+                }, 200); // Espera de 300ms antes de expandir
+            }
+        });
+
+        card.addEventListener("mouseleave", () => {
+            clearTimeout(debounceTimeout); // Cancela el debounce si el mouse sale antes
+            if (isExpanded) {
+                setTimeout(() => {
+                    card.classList.remove("expanded");
+                    isExpanded = false;
+                }, 1100); // Espera de 200ms antes de contraer
+            }
+        });
+
+        card.addEventListener("click", () => {
+            clearTimeout(debounceTimeout); // Evita que el debounce se active si el usuario hace clic antes de que pase el tiempo
+            isExpanded = !isExpanded;
+            card.classList.toggle("expanded");
+        });
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    agregarEfectoHover();
+});
