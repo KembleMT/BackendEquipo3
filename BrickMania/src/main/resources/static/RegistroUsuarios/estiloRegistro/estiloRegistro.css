@@ -1,0 +1,229 @@
+:root {
+    --background-rosa: #bf60a6;
+    --background-amarillo: #f2cc0f;
+    --button-color: #bf60a6;
+}
+
+.container {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+label {
+    font-weight: bold;
+    color: var(--background-rosa);
+}
+
+.form-control {
+    border: 1px solid var(--background-rosa)!important;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: var(--button-color) !important;
+    color: white !important;
+    border: 2px solid white !important;
+    border-radius: 5px !important;
+    padding: 6px 12px !important;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s !important;
+    margin-top: 10px !important;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.input-group-append {
+    display: flex;
+    align-items: center; 
+    margin-left: 10px;
+}
+
+.invalid-feedback {
+    background-color: whitesmoke;
+    margin-top: 5px;
+}
+
+.is-valid {
+    background-color: white !important;
+    position: relative;
+}
+
+.is-invalid {
+    background-color: white !important;
+    position: relative;
+}
+
+.is-valid::after {
+    content: '\2714' !important;
+    color: #74d18ab6 !important;
+    font-size: 1.5em;
+    position: relative;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%) !important;
+}
+
+.is-invalid::after {
+    content: '\2716' !important;
+    color: #e65765e0 !important;
+    font-size: 1.5em;
+    position: relative;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%) !important;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 0.875em;
+}
+
+.is-valid::after, .is-invalid::after {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.is-valid.is-valid::after, .is-invalid.is-invalid::after {
+    opacity: 1;
+}
+
+.modal {
+    z-index: 1000;
+    padding-block: 100px;
+  }
+  
+
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.modal-header {
+    background-color: #bf60a6;
+    color: white;
+    border-bottom: 2px solid #ccc;
+}
+
+.modal-footer {
+    background-color: #f4f4f9;
+    border-top: 2px solid #ccc;
+}
+
+
+.btn-primary:hover {
+    background-color: #a84d91 !important;
+    border-color: white !important;
+    color: white !important;
+}
+
+/* Estilo general del texto del checkbox */
+#checkboxLabel {
+    color: var(--text-color); /* Color general */
+    font-size: 14px;
+    opacity: 0.5; /* Translúcido por defecto */
+    transition: opacity 0.3s ease; /* Transición suave */
+}
+
+/* Cuando el checkbox está marcado */
+#gridCheck:checked + #checkboxLabel {
+    opacity: 1; /* Totalmente visible */
+}
+
+/* Estilo para el enlace de Términos y Condiciones */
+.terms-link {
+    color: var(--button-color);
+    opacity: 1; /* Totalmente visible */
+    text-decoration: underline;
+    transition: opacity 0.3s ease;
+}
+
+.terms-link:hover {
+    opacity: 0.8; /* Más translúcido al pasar el cursor */
+}
+
+.terms-link:active {
+    opacity: 0.6; /* Más translúcido al hacer clic */
+}
+
+/* Clase global para deshabilitar */
+.disabled {
+    opacity: 0.5;
+    pointer-events: none; /* Sin interacción */
+}
+
+#gridCheck {
+    display: none; /* Oculta el checkbox original */
+}
+
+/* Estilo del contorno del checkbox */
+#gridCheck + label {
+    position: relative;
+    cursor: pointer;
+    font-size: 16px;
+    padding-left: 30px;
+    color: var(--background-rosa); 
+}
+
+/* Estilo del cuadro del checkbox */
+#gridCheck + label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--background-rosa);
+    border-radius: 4px;
+    background-color: #fff; 
+    transition: all 0.3s ease;
+}
+
+/* Estilo cuando el checkbox está marcado */
+#gridCheck:checked + label::before {
+    background-color: var(--background-rosa);
+    border-color: var(--background-rosa); 
+}
+
+/* Marca dentro del checkbox */
+#gridCheck:checked + label::after {
+    content: '\2713'; /* Símbolo de la palomita */
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    bottom: 10px;
+    right: 3px;
+
+    font-size: 16px;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        width: 100%; 
+        margin-bottom: 10px;
+    }
+
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Grown&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <section class="fondo-personalizado">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <h1 class="display-4 font-weight-bold titulo-principal">Conoce a Nuestro Equipo</h1>
+                    <p class="lead subtitulo subtitulo-nosotros">Nosotros</p>
+                    <p class="lead">Descubre más sobre las personas que hacen esto posible</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            <!-- Las tarjetas serán insertadas dinámicamente aquí. -->
+        </div>
+    </section>
+
+    <script src="../Header_y_footer/header_y_footer.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+        function crearCard(nombre, src, descripcion, github, linkedin) {
+            return `
+                <div class="col-12 col-sm-6 col-md-4 mb-4">
+                    <div class="card">
+                        <img src="${src}" class="card-img-top" alt="${nombre}">
+                        <div class="card-body">
+                            <div class="social-icons">
+                                <a href="${github}" target="_blank"><i class="bi bi-github"></i></a>
+                                <a href="${linkedin}" target="_blank"><i class="bi bi-linkedin"></i></a>
+                            </div>
+                            <h5 class="card-title">${nombre}</h5>
+                            <p class="card-text">${descripcion}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        const equipo = [
+        ['Elsy Rosario Morales Altamirano', './imagenes/elsy.jpeg', 'Soy Desarrolladora Full Stack apasionada por el aprendizaje continuo. Dentro de este proyecto, mi rol principal es en el equipo de desarrollo y más adelante como SCRUM master.', 'https://github.com/ElsyA0', 'http://www.linkedin.com/in/elsy-rosario-morales-altamirano-8103231b5'],
+        ['Aneth Kemble Monroy Tobías', './imagenes/Kemble.png', 'Desarrolladora Full Stack con formación en Ingeniería Mecatrónica. Me apasionan las aplicaciones web y el aprendizaje continuo. Participé en el equipo de desarrollo y como Scrum master.', 'https://github.com/KembleMT', 'http://www.linkedin.com/in/aneth-kemble-mt'],
+        ['Emmanuel Luna Mota', './imagenes/Emmanuel.jpeg', 'Desarrollador Full Stack con experiencia en el ámbito legal. Aplico habilidades como atención al detalle y comunicación efectiva en el desarrollo de software. Implementé funcionalidades del sitio web.', 'https://github.com/Emmanuel-git2', 'http://www.linkedin.com/in/emmanuel-luna-8047b6215'],
+        ['Eric Martínez López', './imagenes/Eric.png', 'Desarrollador Java Full Stack Jr. y Scrum Master. Me encanta diseñar y crear, y creo en el poder de la tecnología para mejorar la vida de las personas.', 'https://github.com/EricMtzLpz', 'https://www.linkedin.com/in/eric-martinez-b55287311'],
+        ['Candy Melissa García Ayala', './imagenes/imagencandy.jpg', 'Full Stack Developer Jr. Curioso y apasionado por la tecnología, con experiencia en gestión de equipos. En este proyecto, soy parte del equipo de desarrollo y Scrum master.',  'https://github.com/CandyMelissaGarcia', 'https://www.linkedin.com/in/candy-melissa-garcia-ayala-88965a187'],
+        ];
+
+      
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const contenedor = document.querySelector('.row.justify-content-center');
+            equipo.forEach(([nombre, src, descripcion, github, linkedin]) => {
+                contenedor.insertAdjacentHTML('beforeend', crearCard(nombre, src, descripcion, github, linkedin));
+            });
+
+            // Añadimos el evento para el sonido al pasar el cursor sobre las tarjetas
+            const tarjetas = document.querySelectorAll('.card');
+            const sonidoSeleccion = new Audio('./sonidoSeleccion.mp3');
+            
+            tarjetas.forEach(tarjeta => {
+                tarjeta.addEventListener('mouseenter', () => {
+                    sonidoSeleccion.play();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

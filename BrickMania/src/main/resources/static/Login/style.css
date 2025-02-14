@@ -1,0 +1,65 @@
+#btninicio {
+    width: 100%; /* Botón de ancho completo */
+    cursor: pointer;
+}
+
+.titulo2{
+    background-color: #5CC8F2;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 60px;
+    text-shadow: 2px 2px 2px #5a5a65;
+    padding-top: 20px;
+}
+
+#letraB{
+    color: #F22E2E;
+}
+
+#letraM{
+    color: #F2E527;
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* Para alinear el header, formulario y footer en columna */
+    min-height: 100vh; /* Altura mínima para ocupar toda la ventana */
+    margin: 0; /* Quita márgenes predeterminados */
+}
+
+.formulario {
+    margin: auto; /* Centra verticalmente en un contenedor flex */ 
+    width: 100%;
+    max-width: 400px; /* Ancho máximo del formulario */
+    padding: 20px;
+    background: #ffffff; /* Fondo del formulario */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para el formulario */
+}
+
+footer {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto; /* Empuja el footer al final */
+}
+.text{
+  font-family: "Montserrat", sans-serif;
+}
+
+#check{
+  text-align: center;
+}
+
+/* Mensajes de error */
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+/* Bordes de error para los campos */
+.input-error {
+  border: solid red medium !important;
+}
+
+ 
