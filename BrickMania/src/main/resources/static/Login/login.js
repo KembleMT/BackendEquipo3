@@ -91,7 +91,8 @@ btnInicio.addEventListener("click", async function (event) {
             sessionStorage.setItem("token", data.token);
             sessionStorage.setItem("usuarioActivo", JSON.stringify({
                 email: data.email,
-                userName: data.userName
+                userName: data.userName,
+                id_rol_fk: data.id_rol_fk
             }));
 
             // Limpiar campos

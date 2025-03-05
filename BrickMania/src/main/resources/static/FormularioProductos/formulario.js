@@ -84,7 +84,7 @@ document.getElementById('submitBtn').addEventListener('click', function (event) 
         imagenUrl: imageField.value.trim()
     };
 
-    const url = idProducto ? `https://3.147.52.41/api/Producto/${idProducto}` : "https://3.147.52.41/api/Producto/";
+    const url = idProducto ? `http://3.147.52.41/api/Producto/${idProducto}` : "http://3.147.52.41/api/Producto/";
     const method = idProducto ? "PUT" : "POST";
 
     fetch(url, {
@@ -107,7 +107,7 @@ document.getElementById('submitBtn').addEventListener('click', function (event) 
 });
 
 function cargarProductos() {
-    fetch("https://3.147.52.41/api/Producto/")
+    fetch("http://3.147.52.41/api/Producto/")
     .then(response => response.json())
     .then(data => {
         console.log("Productos recibidos:", data);
@@ -146,7 +146,7 @@ document.getElementById("btnEliminar").addEventListener("click", function () {
 
     checkboxes.forEach((checkbox) => {
         const id = checkbox.dataset.id;
-        fetch(`https://3.147.52.41/api/Producto/${id}`, { method: "DELETE" })
+        fetch(`http://3.147.52.41/api/Producto/${id}`, { method: "DELETE" })
             .then(response => {
                 if (!response.ok) throw new Error("Error al eliminar el producto.");
                 return response.text();
@@ -168,7 +168,7 @@ document.getElementById("btnEditar").addEventListener("click", function () {
     }
 
     const id = checkboxes[0].dataset.id;
-    fetch(`https://3.147.52.41/api/Producto/${id}`)
+    fetch(`http://3.147.52.41/api/Producto/${id}`)
         .then(response => response.json())
         .then(producto => {
             document.getElementById("productName").value = producto.nombre;

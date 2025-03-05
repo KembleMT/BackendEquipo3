@@ -72,7 +72,7 @@ function headerAndFooter() {
                   <a class="nav-link active" href="http://3.147.52.41/Carrito/carrito.html">Carrito</a>
                 </li>
                 ${
-                  usuarioActivo?.id_rol_fk === 2
+                  Number(usuarioActivo?.id_rol_fk) === 1
                     ? `
                       <li class="nav-item" id="adminNavItem">
                         <a class="nav-link active" href="http://3.147.52.41/FormularioProductos/FormularioProductos.html">Formulario Productos</a>

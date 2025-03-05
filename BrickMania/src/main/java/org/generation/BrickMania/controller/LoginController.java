@@ -57,7 +57,8 @@ public class LoginController {
         response.put("token", token);
         response.put("email", usuarioEncontrado.getEmail());
         response.put("userName", usuarioEncontrado.getNombre());
-
+        response.put("id_rol_fk", String.valueOf(usuarioEncontrado.getId_rol_fk()));
+        
         return ResponseEntity.ok(response);
     }
 }
